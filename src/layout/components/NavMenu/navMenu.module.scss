@@ -1,0 +1,23 @@
+.nav-menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  background-color: #f3f3f3;
+  color: #555;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  .nav-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 18px;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
