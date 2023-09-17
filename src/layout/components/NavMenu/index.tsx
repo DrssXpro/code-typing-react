@@ -9,7 +9,6 @@ const NavMenu = () => (
         {i.text}
       </div>
     ))}
-    <div className={styles["nav-item"]}></div>
   </div>
 );
 
