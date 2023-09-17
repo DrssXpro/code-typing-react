@@ -1,0 +1,37 @@
+.code-modal {
+  .code-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #555;
+    .info-title {
+      span {
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+    .info-detail {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      .info-item {
+        width: calc(34% - 10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 20px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        .title {
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .high-code {
+    max-height: 450px;
+    overflow-y: auto;
+  }
+}

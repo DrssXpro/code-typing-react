@@ -1,0 +1,20 @@
+.typing-count-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #555;
+  margin-bottom: 20px;
+  .count-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    .status {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #f00;
+    }
+  }
+}
