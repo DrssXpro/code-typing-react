@@ -1,17 +1,35 @@
-import { FC, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { Modal } from "antd";
-import styles from "./styles/typingCount.module.scss";
+import styles from "./styles/codeModal.module.scss";
 import { ICodeDetail } from "@/config/code-config";
+import FsCode from "@/components/FsCode/FsCode";
 
 interface ICodeModalProps {
   codeDetail: ICodeDetail;
 }
 
-const CodeModal: FC<ICodeModalProps> = (props: ICodeModalProps) => {
-  const { title, author, lines, charCount, lan, challengeCount, fastTime, mostRate } = props.codeDetail;
-  const [open] = useState(false);
+export interface modalType {
+  controllModal: (show: boolean) => void;
+}
+
+const CodeModal = forwardRef((props: ICodeModalProps, ref) => {
+  const { title, author, lines, charCount, lan, challengeCount, fastTime, mostRate, content } = props.codeDetail;
+  const [open, setOpen] = useState(false);
+
+  const controllModal = (show: boolean) => {
+    setOpen(show);
+  };
+
+  useImperativeHandle(ref, () => ({ controllModal } as modalType), []);
+
   return (
-    <Modal className={styles["code-modal"]} open={open} footer={null} title="代码详情">
+    <Modal
+      className={styles["code-modal"]}
+      open={open}
+      onCancel={() => controllModal(false)}
+      footer={null}
+      title="代码详情"
+    >
       <div className={styles["code-content"]}>
         <div className={styles["info-title"]}>
           <span>
@@ -44,10 +62,12 @@ const CodeModal: FC<ICodeModalProps> = (props: ICodeModalProps) => {
             <div className={styles["count"]}>{mostRate}</div>
           </div>
         </div>
-        <div className={styles["high-code"]}></div>
+        <div className={styles["high-code"]}>
+          <FsCode code={content} />
+        </div>
       </div>
     </Modal>
   );
-};
+});
 
 export default CodeModal;
